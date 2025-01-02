@@ -1,14 +1,17 @@
 import java.sql.*;
 
-public class database {
-    final String PATH = "jdbc:mysql://localhost:3306/gymu_project";
-    String username = "root";
-    String password = "";
+public class Database {
+    private final String PATH = "jdbc:mysql://localhost:3306/gymu_project";
+    private String username = "root";
+    private String password = "";
 
-    Connection con;
-    Statement st;
-    ResultSet rs;
-    
+    private Connection con;
+    private Statement st;
+    private ResultSet rs;
+
+    Database() {
+        
+    }    
 
     //Class.forName(“oracle.jdbc.driver.OracleDriver”); // needs to be in main 
 
@@ -19,7 +22,7 @@ public class database {
             int response = st.executeUpdate(querry);
             if (response != 1)
                 throw new ArithmeticException("The update was unsuccessful");
-                
+
             con.close();
 
         } catch (Exception e) {
