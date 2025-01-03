@@ -7,66 +7,44 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 public class MyJDBC {
+    private static Database db = new Database();
+
     public static boolean register(String username, String password) {
-       try{
-           if(!checkUser(username)) {
-               Connection connection = DriverManager.getConnection(CommonConstants.DB_URL,
-                       CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
+        if (!checkUser(username)) {
+            String query = "SELECT user_id FROM user ORDER BY user_id DESC;";
+            String response = db.read(query, "user_id");
+            try {
+                int userId = Integer.parseInt(response) + 1;
+                query = "INSERT INTO user (user_id, username, password) VALUES (" + userId + ", '" + username + "', '" + password + "');";
+                db.write(query);
+                return true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid integer input");
 
-               PreparedStatement insertUser = connection.prepareStatement(
-                       "INSERT INTO " + CommonConstants.DB_USERS_TABLE_NAME + "(username, password)" + " VALUES (?, ?)"
-               );
-
-               insertUser.setString(1, username);
-               insertUser.setString(2, password);
-
-               insertUser.executeUpdate();
-               return true;
-           }
-       }catch(SQLException e){
-           e.printStackTrace();
-       }
+            }
+        }
         return false;
     }
 
-    public static boolean checkUser(String username){
-        try{
-            Connection connection = DriverManager.getConnection(CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-            PreparedStatement checkUserExists = connection.prepareStatement(
-                    "SELECT * FROM "+ CommonConstants.DB_USERS_TABLE_NAME + " WHERE USERNAME = ?"
-            );
-            checkUserExists.setString(1, username);
+    public static boolean checkUser(String username) {
+        String query = "SELECT username FROM user WHERE username = '" + username + "';";
+        String response = db.read(query, "username");
 
-            ResultSet resultSet = checkUserExists.executeQuery();
-
-            if(!resultSet.isBeforeFirst())
-                return false;
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
+        if (response.equals(username))
             return true;
-
+        else
+            return false;
     }
 
     public static boolean validateLogin(String username, String password) {
-        try{
-            Connection connection = DriverManager.getConnection(CommonConstants.DB_URL,
-                    CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
+        String query = "SELECT username, password FROM user WHERE username = '" + username + "';";
+        String response = db.read(query, "username");
 
-            PreparedStatement validateUser = connection.prepareStatement(
-                    "SELECT * FROM "+ CommonConstants.DB_USERS_TABLE_NAME + " WHERE USERNAME = ? AND PASSWORD = ?"
-            );
-            validateUser.setString(1, username);
-            validateUser.setString(2, password);
-
-            ResultSet resultSet = validateUser.executeQuery();
-
-            if(!resultSet.isBeforeFirst()){
-                return false;
-            }
-        }catch(SQLException e){
-        e.printStackTrace();
+        if (response.equals(username)) {
+            response = db.read(query, "password");
+            if (response.equals(password))
+                return true;
         }
-        return true;
+        return false;
     }
 }
