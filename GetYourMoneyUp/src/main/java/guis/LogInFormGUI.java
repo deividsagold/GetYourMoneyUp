@@ -49,6 +49,7 @@ public class LogInFormGUI extends Form{
         add(passwordField);
         add(passwordLabel);
 
+        //Login Poga
         JButton loginButton = new JButton("Login");
         loginButton.setFont(new Font("Dialog", Font.BOLD, 18));
         loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -60,8 +61,12 @@ public class LogInFormGUI extends Form{
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
+                //pec veiksmiga log in atveras izmaksu logs
                 if(MyJDBC.validateLogin(username, password)){
                     JOptionPane.showMessageDialog(LogInFormGUI.this, "Ielogosnas veiksmiga");
+                    LogInFormGUI.this.dispose();
+
+                new DataFormGUI().setVisible(true);
                 }else{
                     JOptionPane.showMessageDialog(LogInFormGUI.this, "Ielogosanas neveiksmiga");
                 }

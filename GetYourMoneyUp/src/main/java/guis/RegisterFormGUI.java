@@ -38,7 +38,7 @@ public class RegisterFormGUI extends Form{
         add(usernameField);
 
         JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setBounds(30, 200, 450, 25);
+        passwordLabel.setBounds(30, 325, 450, 25);
         passwordLabel.setForeground(CommonConstants.TEXT_COLOR);
         passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 

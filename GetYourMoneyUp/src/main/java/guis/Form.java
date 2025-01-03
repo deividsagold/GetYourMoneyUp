@@ -15,6 +15,6 @@ public class Form extends JFrame{
         setLayout(null);
         setLocationRelativeTo(null);
 
-        setResizable(true);
+        setResizable(false);
     }
 }
