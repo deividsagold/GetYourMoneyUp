@@ -68,6 +68,45 @@ public class DataFormGUI<Int> extends Form{
         });
         add(addButton);
 
+        JLabel dateLabel = new JLabel();
+        dateLabel.setSize(100,25);
+        dateLabel.setForeground(CommonConstants.TEXT_COLOR);
+        dateLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
+
+
+        JTextField dateField = new JTextField();
+        dateField.setBounds(410, 150, 100, 25);
+        dateField.setBackground(CommonConstants.PRIMARY_COLOR);
+        dateField.setForeground(CommonConstants.TEXT_COLOR);
+        dateField.setFont(new Font("Dialog", Font.PLAIN, 24));
+
+        add(dateField);
+        add(dateLabel);
+
+        //izmaksu saraksts window
+        JPanel IzmSaraksts = new JPanel();
+        IzmSaraksts.setBounds(100, 200, 300, 300);
+        IzmSaraksts.setBackground(CommonConstants.PRIMARY_COLOR);
+
+        JLabel IzmSarakstsLabel = new JLabel();
+        IzmSarakstsLabel.setSize(100,25);
+        IzmSarakstsLabel.setForeground(CommonConstants.TEXT_COLOR);
+        IzmSarakstsLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
+
+        add(IzmSarakstsLabel);
+        add(IzmSaraksts);
+
+        //izmaksu summa
+        JPanel IzmSum = new JPanel();
+        IzmSum.setBackground(CommonConstants.PRIMARY_COLOR);
+        IzmSum.setBounds(100, 510, 300, 50);
+        add(IzmSum);
+
+        JLabel IzmSumLabel = new JLabel();
+        dateLabel.setSize(100,25);
+        dateLabel.setForeground(CommonConstants.TEXT_COLOR);
+        dateLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
+
         //calendar button
         JButton dateButton = new JButton("Date");
         dateButton.setFont(new Font("Dialog", Font.PLAIN, 18));
@@ -94,53 +133,12 @@ public class DataFormGUI<Int> extends Form{
                         text += finanseArray[i] + "\n";
                         i++;
                     }
-                    labelName.setText(text);
+                    IzmSarakstsLabel.setText(text);
                 } else
                     JOptionPane.showMessageDialog(DataFormGUI.this, "Datumu formātam jābūt dd.mm.yyyy");
             }
         });
-
-        JLabel dateLabel = new JLabel();
-        dateLabel.setSize(100,25);
-        dateLabel.setForeground(CommonConstants.TEXT_COLOR);
-        dateLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
-
-
-        JTextField dateField = new JTextField();
-        dateField.setBounds(410, 150, 100, 25);
-        dateField.setBackground(CommonConstants.PRIMARY_COLOR);
-        dateField.setForeground(CommonConstants.TEXT_COLOR);
-        dateField.setFont(new Font("Dialog", Font.PLAIN, 24));
-
-        add(dateField);
         add(dateButton);
-        add(dateLabel);
-        
-        //izmaksu saraksts window
-        JPanel IzmSaraksts = new JPanel();
-        IzmSaraksts.setBounds(100, 200, 300, 300);
-        IzmSaraksts.setBackground(CommonConstants.PRIMARY_COLOR);
-
-        JLabel IzmSarakstsLabel = new JLabel();
-        IzmSarakstsLabel.setSize(100,25);
-        IzmSarakstsLabel.setForeground(CommonConstants.TEXT_COLOR);
-        IzmSarakstsLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
-
-        add(IzmSarakstsLabel);
-        add(IzmSaraksts);
-
-        //izmaksu summa
-        JPanel IzmSum = new JPanel();
-        IzmSum.setBackground(CommonConstants.PRIMARY_COLOR);
-        IzmSum.setBounds(100, 510, 300, 50);
-        add(IzmSum);
-
-        JLabel IzmSumLabel = new JLabel();
-        dateLabel.setSize(100,25);
-        dateLabel.setForeground(CommonConstants.TEXT_COLOR);
-        dateLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
-
-
 
         //expanded saraksts window, idk man
        // JButton ExpandButton = new JButton("Palielinat");

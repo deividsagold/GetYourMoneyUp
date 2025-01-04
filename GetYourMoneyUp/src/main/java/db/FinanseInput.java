@@ -50,18 +50,18 @@ public class FinanseInput {
 
     public static void dataUpdate(double sum) {
         int izmaksas_id = 1;
-        String query = "UPDATE izmaksas SET sum = " + sum + " WHERE izmaksas_id == " + izmaksas_id;
+        String query = "UPDATE izmaksas SET sum = " + sum + " WHERE izmaksas_id = " + izmaksas_id;
 
         DB.write(query);
     }
 
     public static void returnSmallData(String[] dataArray, String date) {
-        String query = "SELECT sum FROM izmaksas WHERE user_id == " + userId + " AND date == '" + date + "' ORDER BY izmaksas_id DESC;";
+        String query = "SELECT sum FROM izmaksas WHERE user_id = " + userId + " AND date = '" + date + "' ORDER BY izmaksas_id DESC;";
         DB.readSmallArray(dataArray, query, "sum");
     }
 
     public static String returnWholeSum(String date) {
-        String query = "SELECT sum FROM izmaksas WHERE user_id == " + userId + " AND date == '" + date + "';";
+        String query = "SELECT sum FROM izmaksas WHERE user_id = " + userId + " AND date = '" + date + "';";
         double sum = DB.returnColumnSum(query, "sum");
         String text = "" + sum;
         return text;
