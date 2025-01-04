@@ -84,7 +84,7 @@ public class DataFormGUI<Int> extends Form{
 
                     String sumText = reviewFinanse.returnWholeSum(date);
 
-                    sumTextLabel.setText(sumText);
+                    IzmSumLabel.setText(sumText);
 
                     String[] finanseArray = new String[5];
                     reviewFinanse.returnSmallData(finanseArray, date);
