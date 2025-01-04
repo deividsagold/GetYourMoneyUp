@@ -105,13 +105,17 @@ public class DataFormGUI<Int> extends Form{
         add(dateButton);
         add(dateLabel);
         
-        //saraksts window
+        //izmaksu saraksts window
         JPanel IzmSaraksts = new JPanel();
-        //Saraksts.setLocation(100, 300);
-        //Saraksts.setSize(100, 200);
         IzmSaraksts.setBounds(100, 200, 300, 300);
         IzmSaraksts.setBackground(CommonConstants.PRIMARY_COLOR);
-        
+
+        JLabel IzmSarakstsLabel = new JLabel();
+        IzmSarakstsLabel.setSize(100,25);
+        IzmSarakstsLabel.setForeground(CommonConstants.TEXT_COLOR);
+        IzmSarakstsLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
+
+        add(IzmSarakstsLabel);
         add(IzmSaraksts);
 
         //izmaksu summa
@@ -128,21 +132,21 @@ public class DataFormGUI<Int> extends Form{
 
 
         //expanded saraksts window, idk man
-        JButton ExpandButton = new JButton("Palielinat");
-        ExpandButton.setBackground(CommonConstants.SECONDARY_COLOR);
-        ExpandButton.setBounds(370, 200, 30, 30);
-        ExpandButton.setFont(new Font("Dialog", Font.PLAIN, 18));
-        ExpandButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));     
-        ExpandButton.addActionListener(new ActionListener() {
+       // JButton ExpandButton = new JButton("Palielinat");
+       // ExpandButton.setBackground(CommonConstants.SECONDARY_COLOR);
+       // ExpandButton.setBounds(370, 200, 30, 30);
+        //ExpandButton.setFont(new Font("Dialog", Font.PLAIN, 18));
+       // ExpandButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+       // ExpandButton.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                IzmSumExpanded();
+         //   @Override
+         //   public void actionPerformed(ActionEvent e) {
+         //       IzmSumExpanded();
                 
-            }
+         //   }
             
-        });
-        add(ExpandButton);
+       // });
+       // add(ExpandButton);
 
 
     }
