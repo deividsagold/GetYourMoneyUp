@@ -88,7 +88,22 @@ public class DataFormGUI<Int> extends Form{
                 }
             }
         });
+
+        JLabel dateLabel = new JLabel();
+        dateLabel.setSize(100,25);
+        dateLabel.setForeground(CommonConstants.TEXT_COLOR);
+        dateLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
+
+
+        JTextField dateField = new JTextField();
+        dateField.setBounds(410, 150, 100, 25);
+        dateField.setBackground(CommonConstants.PRIMARY_COLOR);
+        dateField.setForeground(CommonConstants.TEXT_COLOR);
+        dateField.setFont(new Font("Dialog", Font.PLAIN, 24));
+
+        add(dateField);
         add(dateButton);
+        add(dateLabel);
         
         //saraksts window
         JPanel IzmSaraksts = new JPanel();
@@ -99,10 +114,17 @@ public class DataFormGUI<Int> extends Form{
         
         add(IzmSaraksts);
 
+        //izmaksu summa
         JPanel IzmSum = new JPanel();
         IzmSum.setBackground(CommonConstants.PRIMARY_COLOR);
         IzmSum.setBounds(100, 510, 300, 50);
         add(IzmSum);
+
+        JLabel IzmSumLabel = new JLabel();
+        dateLabel.setSize(100,25);
+        dateLabel.setForeground(CommonConstants.TEXT_COLOR);
+        dateLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
+
 
 
         //expanded saraksts window, idk man
@@ -121,7 +143,8 @@ public class DataFormGUI<Int> extends Form{
             
         });
         add(ExpandButton);
-        
+
+
     }
 
     public void IzmSumExpanded(){
