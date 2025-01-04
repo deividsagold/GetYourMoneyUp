@@ -63,4 +63,23 @@ public class Database {
             System.out.println("There was an error while connecting to the database:\n" + e);
         }
     }
+
+    public static double returnColumnSum(String query, String column) {
+        try{
+            con = DriverManager.getConnection(PATH, username, password);
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            double sum = 0.0;
+            String response;
+            while (rs.next()) {
+                response = rs.getString(column);
+                sum += Double.parseDouble(response);
+            }
+            con.close();
+            return sum;
+        } catch (Exception e) {
+            System.out.println("There was an error while connecting to the database:\n" + e);
+            return -0.001;
+        }
+    }
 }

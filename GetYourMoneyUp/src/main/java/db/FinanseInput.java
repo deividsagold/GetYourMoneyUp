@@ -2,7 +2,8 @@ package db;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class FinanseInput {
     private static int finanse_id;
@@ -11,7 +12,6 @@ public class FinanseInput {
     private static String category;
     String query;
     private static Database DB = new Database();
-    Scanner sc = new Scanner(System.in);
 
 
     public FinanseInput(int userId) {
@@ -58,5 +58,23 @@ public class FinanseInput {
     public static void returnSmallData(String[] dataArray, String date) {
         String query = "SELECT sum FROM izmaksas WHERE user_id == " + userId + " AND date == '" + date + "' ORDER BY izmaksas_id DESC;";
         DB.readSmallArray(dataArray, query, "sum");
+    }
+
+    public static String returnWholeSum(String date) {
+        String query = "SELECT sum FROM izmaksas WHERE user_id == " + userId + " AND date == '" + date + "';";
+        double sum = DB.returnColumnSum(query, "sum");
+        String text = "" + sum;
+        return text;
+    }
+
+    public static boolean checkForValidDate(String date) {
+        String datePattern = "^\\d{2}\\.\\d{2}\\.\\d{4}$";
+        Pattern pattern = Pattern.compile(datePattern);
+        Matcher matcher = pattern.matcher(date);
+
+        if (matcher.matches())
+            return true;
+        else
+            return false;
     }
 }
