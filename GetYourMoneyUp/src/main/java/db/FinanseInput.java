@@ -54,4 +54,9 @@ public class FinanseInput {
 
         DB.write(query);
     }
+
+    public static void returnSmallData(String[] dataArray, String date) {
+        String query = "SELECT sum FROM izmaksas WHERE user_id == " + userId + " AND date == '" + date + "' ORDER BY izmaksas_id DESC;";
+        DB.readSmallArray(dataArray, query, "sum");
+    }
 }

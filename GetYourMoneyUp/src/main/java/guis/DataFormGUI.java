@@ -74,6 +74,20 @@ public class DataFormGUI<Int> extends Form{
         dateButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dateButton.setBackground(CommonConstants.PRIMARY_COLOR);
         dateButton.setBounds(375, 150, 30, 30);
+        dateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                FinanseInput reviewFinanse = new FinanseInput(user_id);
+                String date = IzmaksasField.getText();
+                String[] finanseArray = new String[5];
+                reviewFinanse.returnSmallData(finanseArray, date);
+                int i = 0;
+                while (finanseArray[i] != null && i < finanseArray.length) {
+                    labelName.setText(finanseArray[i]);
+                    i++;
+                }
+            }
+        });
         add(dateButton);
         
         //saraksts window

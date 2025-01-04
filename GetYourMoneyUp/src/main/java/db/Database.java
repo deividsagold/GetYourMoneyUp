@@ -47,4 +47,20 @@ public class Database {
             return "";
         }
     }
+
+    public static void readSmallArray(String[] array, String query, String column) {
+        try{
+            con = DriverManager.getConnection(PATH, username, password);
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            int i = 0;
+            while (rs.next() && i < array.length) {
+                array[i] = rs.getString(column);
+                i++;
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println("There was an error while connecting to the database:\n" + e);
+        }
+    }
 }
