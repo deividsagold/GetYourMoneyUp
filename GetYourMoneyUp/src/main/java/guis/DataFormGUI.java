@@ -13,9 +13,12 @@ import java.awt.event.MouseEvent;
 import java.util.Scanner;
 
 public class DataFormGUI<Int> extends Form{
-    public DataFormGUI(){
+    private static int user_id;
+    public DataFormGUI(int user_id){
         super("Izmaksas");
+        this.user_id = user_id;
         addGuiComponents();
+
     }
 
     private void addGuiComponents(){
@@ -38,8 +41,6 @@ public class DataFormGUI<Int> extends Form{
         IzmaksasField.setBackground(CommonConstants.PRIMARY_COLOR);
         IzmaksasField.setForeground(CommonConstants.TEXT_COLOR);
         IzmaksasField.setFont(new Font("Dialog", Font.PLAIN, 24));
-        Int summa = (Int) IzmaksasField.getText();
-        //to add only integers without text
 
         add(IzmaksasField);
 
@@ -49,6 +50,22 @@ public class DataFormGUI<Int> extends Form{
         addButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addButton.setBackground(CommonConstants.PRIMARY_COLOR);
         addButton.setBounds(95, 150, 30, 30);
+        addButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FinanseInput AddFinanse = new FinanseInput(user_id);
+                String izmaksas = IzmaksasField.getText();
+
+                try {
+                    double summa = Double.parseDouble(izmaksas);
+                    summa = 0.0 + summa;
+                    AddFinanse.dataInput(summa);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Invalid Double input");
+                    JOptionPane.showMessageDialog(DataFormGUI.this, "nepareizi ievadīts skaitlis");
+                }
+            }
+        });
         add(addButton);
 
         //calendar button

@@ -65,8 +65,11 @@ public class LogInFormGUI extends Form{
                 if(MyJDBC.validateLogin(username, password)){
                     JOptionPane.showMessageDialog(LogInFormGUI.this, "Ielogosnas veiksmiga");
                     LogInFormGUI.this.dispose();
-
-                new DataFormGUI().setVisible(true);
+                    int userId = MyJDBC.returnUserId(username);
+                    if(userId >= 0)
+                        new DataFormGUI(userId).setVisible(true);
+                    else
+                        JOptionPane.showMessageDialog(LogInFormGUI.this, "Something went wrong");
                 }else{
                     JOptionPane.showMessageDialog(LogInFormGUI.this, "Ielogosanas neveiksmiga");
                 }

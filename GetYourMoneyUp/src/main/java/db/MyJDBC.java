@@ -41,4 +41,16 @@ public class MyJDBC {
         }
         return false;
     }
+
+    public static int returnUserId(String username) {
+        String query = "SELECT user_id FROM user WHERE username = '" + username + "';";
+        String response = db.read(query, "user_id");
+        try {
+            int userId = Integer.parseInt(response);
+            return userId;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid integer input");
+            return -1;
+        }
+    }
 }
