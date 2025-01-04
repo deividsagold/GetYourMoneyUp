@@ -79,13 +79,24 @@ public class DataFormGUI<Int> extends Form{
             public void actionPerformed(ActionEvent actionEvent) {
                 FinanseInput reviewFinanse = new FinanseInput(user_id);
                 String date = IzmaksasField.getText();
-                String[] finanseArray = new String[5];
-                reviewFinanse.returnSmallData(finanseArray, date);
-                int i = 0;
-                while (finanseArray[i] != null && i < finanseArray.length) {
-                    labelName.setText(finanseArray[i]);
-                    i++;
-                }
+
+                if (reviewFinanse.checkForValidDate(date)) {
+
+                    String sumText = reviewFinanse.returnWholeSum(date);
+
+                    IzmSumLabel.setText(sumText);
+
+                    String[] finanseArray = new String[5];
+                    reviewFinanse.returnSmallData(finanseArray, date);
+                    int i = 0;
+                    String text = "";
+                    while (finanseArray[i] != null && i < finanseArray.length) {
+                        text += finanseArray[i] + "\n";
+                        i++;
+                    }
+                    labelName.setText(text);
+                } else
+                    JOptionPane.showMessageDialog(DataFormGUI.this, "Datumu formātam jābūt dd.mm.yyyy");
             }
         });
 
