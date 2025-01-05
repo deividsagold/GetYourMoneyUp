@@ -103,8 +103,8 @@ public class DataFormGUI extends Form{
         IzmSaraksts.add(IzmSarakstsLabel, dateLabel);
 
         //calendar button
-        JButton dateButton = new JButton("Date");
-        dateButton.setFont(new Font("Dialog", Font.PLAIN, 18));
+        JButton dateButton = new JButton("\uD83D\uDCC5");
+        dateButton.setFont(new Font("Dialog", Font.PLAIN, 12));
         dateButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dateButton.setBackground(CommonConstants.PRIMARY_COLOR);
         dateButton.setBounds(375, 150, 50, 50);
