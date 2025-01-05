@@ -69,27 +69,19 @@ public class DataFormGUI<Int> extends Form{
         add(addButton);
 
         JLabel dateLabel = new JLabel();
-        dateLabel.setSize(100,25);
+        dateLabel.setSize(200,25);
         dateLabel.setForeground(CommonConstants.TEXT_COLOR);
         dateLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
-
-
-        JTextField dateField = new JTextField();
-        dateField.setBounds(410, 150, 100, 25);
-        dateField.setBackground(CommonConstants.PRIMARY_COLOR);
-        dateField.setForeground(CommonConstants.TEXT_COLOR);
-        dateField.setFont(new Font("Dialog", Font.PLAIN, 24));
-
-        add(dateField);
         add(dateLabel);
 
         //izmaksu saraksts window
         JPanel IzmSaraksts = new JPanel();
-        IzmSaraksts.setBounds(100, 200, 300, 300);
+        IzmSaraksts.setBounds(100, 200, 400, 300);
         IzmSaraksts.setBackground(CommonConstants.PRIMARY_COLOR);
 
+
         JLabel IzmSarakstsLabel = new JLabel();
-        IzmSarakstsLabel.setSize(100,25);
+        IzmSarakstsLabel.setSize(200,25);
         IzmSarakstsLabel.setForeground(CommonConstants.TEXT_COLOR);
         IzmSarakstsLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
@@ -103,9 +95,12 @@ public class DataFormGUI<Int> extends Form{
         add(IzmSum);
 
         JLabel IzmSumLabel = new JLabel();
-        dateLabel.setSize(100,25);
+        dateLabel.setSize(200,25);
         dateLabel.setForeground(CommonConstants.TEXT_COLOR);
         dateLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
+
+        IzmSum.add(IzmSumLabel);
+        IzmSaraksts.add(IzmSarakstsLabel, dateLabel);
 
         //calendar button
         JButton dateButton = new JButton("Date");
@@ -139,6 +134,7 @@ public class DataFormGUI<Int> extends Form{
             }
         });
         add(dateButton);
+
 
         //expanded saraksts window, idk man
        // JButton ExpandButton = new JButton("Palielinat");
