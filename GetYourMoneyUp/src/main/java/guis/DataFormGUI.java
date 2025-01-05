@@ -12,7 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Scanner;
 
-public class DataFormGUI<Int> extends Form{
+public class DataFormGUI extends Form{
     private static int user_id;
     public DataFormGUI(int user_id){
         super("Izmaksas");
@@ -37,7 +37,7 @@ public class DataFormGUI<Int> extends Form{
         add(izmaksasLabel);
 
         JTextField IzmaksasField = new JTextField();
-        IzmaksasField.setBounds(125, 150, 250, 30);
+        IzmaksasField.setBounds(125, 150, 250, 50);
         IzmaksasField.setBackground(CommonConstants.PRIMARY_COLOR);
         IzmaksasField.setForeground(CommonConstants.TEXT_COLOR);
         IzmaksasField.setFont(new Font("Dialog", Font.PLAIN, 24));
@@ -49,7 +49,7 @@ public class DataFormGUI<Int> extends Form{
         addButton.setFont(new Font("Dialog", Font.PLAIN, 18));
         addButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addButton.setBackground(CommonConstants.PRIMARY_COLOR);
-        addButton.setBounds(95, 150, 30, 30);
+        addButton.setBounds(75, 150, 50, 50);
         addButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -76,7 +76,7 @@ public class DataFormGUI<Int> extends Form{
 
         //izmaksu saraksts window
         JPanel IzmSaraksts = new JPanel();
-        IzmSaraksts.setBounds(100, 200, 400, 300);
+        IzmSaraksts.setBounds(100, 200, 300, 300);
         IzmSaraksts.setBackground(CommonConstants.PRIMARY_COLOR);
 
 
@@ -95,7 +95,7 @@ public class DataFormGUI<Int> extends Form{
         add(IzmSum);
 
         JLabel IzmSumLabel = new JLabel();
-        dateLabel.setSize(200,25);
+        dateLabel.setSize(200,40);
         dateLabel.setForeground(CommonConstants.TEXT_COLOR);
         dateLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
 
@@ -107,7 +107,7 @@ public class DataFormGUI<Int> extends Form{
         dateButton.setFont(new Font("Dialog", Font.PLAIN, 18));
         dateButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dateButton.setBackground(CommonConstants.PRIMARY_COLOR);
-        dateButton.setBounds(375, 150, 30, 30);
+        dateButton.setBounds(375, 150, 50, 50);
         dateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
