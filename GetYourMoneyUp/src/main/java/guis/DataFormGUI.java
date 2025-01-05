@@ -120,7 +120,7 @@ public class DataFormGUI extends Form{
 
                     IzmSumLabel.setText(sumText);
 
-                    String[] finanseArray = new String[5];
+                    String[] finanseArray = new String[12];
                     reviewFinanse.returnSmallData(finanseArray, date);
                     int i = 0;
                     String text = "<html>";
