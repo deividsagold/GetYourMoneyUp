@@ -116,18 +116,19 @@ public class DataFormGUI<Int> extends Form{
 
                 if (reviewFinanse.checkForValidDate(date)) {
 
-                    String sumText = reviewFinanse.returnWholeSum(date);
+                    String sumText = reviewFinanse.returnWholeSum(date) + "€";
 
                     IzmSumLabel.setText(sumText);
 
                     String[] finanseArray = new String[5];
                     reviewFinanse.returnSmallData(finanseArray, date);
                     int i = 0;
-                    String text = "";
+                    String text = "<html>";
                     while (finanseArray[i] != null && i < finanseArray.length) {
-                        text += finanseArray[i] + "\n";
+                        text += finanseArray[i] + "€<br>";
                         i++;
                     }
+                    text += "</html>";
                     IzmSarakstsLabel.setText(text);
                 } else
                     JOptionPane.showMessageDialog(DataFormGUI.this, "Datumu formātam jābūt dd.mm.yyyy");
