@@ -23,7 +23,8 @@ public class FinanseInput {
     private static boolean updateFinanseId() {
         String query = "SELECT izmaksas_id FROM izmaksas ORDER BY izmaksas_id DESC;";
         String response = DB.read(query, "izmaksas_id");
-
+        if (response == null || response.isEmpty())
+            response = "-1";
         try {
             finanse_id = Integer.parseInt(response) + 1;
             return true;

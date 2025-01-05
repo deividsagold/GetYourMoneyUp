@@ -60,6 +60,7 @@ public class DataFormGUI extends Form{
                     double summa = Double.parseDouble(izmaksas);
                     summa = 0.0 + summa;
                     AddFinanse.dataInput(summa);
+                    JOptionPane.showMessageDialog(DataFormGUI.this, "Dati ir veiksmīgi saglabāti");
                 } catch (NumberFormatException nfe) {
                     System.out.println("Invalid Double input");
                     JOptionPane.showMessageDialog(DataFormGUI.this, "nepareizi ievadīts skaitlis");
@@ -124,7 +125,7 @@ public class DataFormGUI extends Form{
                     reviewFinanse.returnSmallData(finanseArray, date);
                     int i = 0;
                     String text = "<html>";
-                    while (finanseArray[i] != null && i < finanseArray.length) {
+                    while (i < finanseArray.length && finanseArray[i] != null) {
                         text += finanseArray[i] + "€<br>";
                         i++;
                     }

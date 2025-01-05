@@ -7,6 +7,8 @@ public class MyJDBC {
         if (!checkUser(username)) {
             String query = "SELECT user_id FROM user ORDER BY user_id DESC;";
             String response = db.read(query, "user_id");
+            if (response == null || response.isEmpty())
+                response = "-1";
             try {
                 int userId = Integer.parseInt(response) + 1;
                 query = "INSERT INTO user (user_id, username, password) VALUES (" + userId + ", '" + username + "', '" + password + "');";
@@ -14,7 +16,6 @@ public class MyJDBC {
                 return true;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid integer input");
-
             }
         }
         return false;
